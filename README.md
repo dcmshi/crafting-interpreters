@@ -70,6 +70,68 @@ python -m pylox script.lox      # run a file
 | `scanner.py` | 4 | characters → tokens |
 | `lox.py` | 4 | entry point: run a file, or a REPL |
 
+## Testing as you go
+
+Every file in `examples/` carries its own expected output in a header comment, so the
+inner loop is: implement a feature, run the relevant example, diff against the header.
+
+```
+python -m pylox examples/08-statements-and-state.lox
+```
+
+Files are named for the chapter that makes them run, so a file failing before its chapter
+is the expected state — not a bug.
+
+### What to check after each chapter
+
+| After | Run | Expect |
+| --- | --- | --- |
+| 4. Scanning | `python -m pylox examples/07-expressions.lox` | A **token dump**, not program output. Every example file should scan clean — no "Unexpected character." Try the REPL too: `var x = 1;` should produce 5 tokens plus EOF. |
+| 5. Representing Code | *(no example runs yet)* | Hand-build a tree in a scratch file and print it: `(* (- 123) (group 45.67))` |
+| 6. Parsing Expressions | REPL: `1 + 2 * 3` | `(+ 1 (* 2 3))` — precedence. Then `5 - 3 - 1` → `(- (- 5 3) 1)` for associativity. |
+| 7. Evaluating Expressions | REPL: `1 + 2 * 3` | `7`. Paste lines from `07-expressions.lox` individually — the file itself needs ch. 8's `print` statement to run whole. |
+| 8. Statements and State | `07-expressions.lox`, `08-statements-and-state.lox` | Both match their headers exactly. |
+| 9. Control Flow | `09-control-flow.lox` | Matches. |
+| 10. Functions | `10-functions.lox` | Matches. **And `11-scope-resolution.lox` prints `global` then `block`** — that failure is correct here, it's the bug ch. 11 fixes. |
+| 11. Resolving and Binding | `11-scope-resolution.lox` | `global` twice. **This is the project goal.** |
+| 12. Classes | `12-classes.lox` | Matches. |
+| 13. Inheritance | `13-inheritance.lox` | Matches. Everything in `examples/` now passes. |
+
+### Running every example at once
+
+PowerShell:
+
+```powershell
+Get-ChildItem examples/*.lox | ForEach-Object {
+  Write-Host "=== $($_.Name) ===" -ForegroundColor Cyan
+  python -m pylox $_.FullName
+}
+```
+
+Bash:
+
+```bash
+for f in examples/*.lox; do echo "=== $f ==="; python -m pylox "$f"; done
+```
+
+### Exit codes
+
+Worth checking, since the book's own test suite asserts on them.
+
+| Code | Meaning |
+| --- | --- |
+| 0 | success |
+| 64 | usage error — wrong number of command-line arguments |
+| 65 | static error — the source failed to scan or parse |
+| 70 | runtime error |
+
+PowerShell reads the last exit code from `$LASTEXITCODE`; bash from `$?`.
+
+### Going further
+
+Once most examples pass, point the book's own test suite at pylox — it's several hundred
+cases against our seven. See Resources below.
+
 ## Resources
 
 - **[craftinginterpreters.com](https://craftinginterpreters.com/)** — the book, free to
