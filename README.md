@@ -69,3 +69,17 @@ python -m pylox script.lox      # run a file
 | `error_reporter.py` | 4 | error reporting, shared by every phase |
 | `scanner.py` | 4 | characters → tokens |
 | `lox.py` | 4 | entry point: run a file, or a REPL |
+
+## Resources
+
+- **[craftinginterpreters.com](https://craftinginterpreters.com/)** — the book, free to
+  read online.
+- **[munificent/craftinginterpreters](https://github.com/munificent/craftinginterpreters)**
+  — the book's official repository. Contains the book's own source text, the complete
+  reference implementations of jlox and clox, and most usefully:
+  - **[`test/`](https://github.com/munificent/craftinginterpreters/tree/master/test)** —
+    several hundred `.lox` files with expected output and expected error messages,
+    organized by feature, plus a runner that can be pointed at any implementation. Far
+    more thorough than our `examples/`. Clone it *outside* this repo.
+  - **[`note/answers/`](https://github.com/munificent/craftinginterpreters/tree/master/note/answers)**
+    — worked solutions to the end-of-chapter challenges.
