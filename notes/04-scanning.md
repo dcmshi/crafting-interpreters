@@ -90,14 +90,14 @@ Then append the EOF token.
 
 Helpers you'll want, roughly in the order you need them:
 
-| Helper | Job |
-| --- | --- |
-| `is_at_end` | has `current` run off the end |
-| `advance` | consume and return the current character |
-| `add_token` | emit a token spanning `start`..`current` |
-| `match` | conditional advance — consume only if the next char is the expected one |
-| `peek` | look at the current character without consuming |
-| `peek_next` | look one further ahead |
+| Helper      | Job                                                                     |
+| ----------- | ----------------------------------------------------------------------- |
+| `is_at_end` | has `current` run off the end                                           |
+| `advance`   | consume and return the current character                                |
+| `add_token` | emit a token spanning `start`..`current`                                |
+| `match`     | conditional advance — consume only if the next char is the expected one |
+| `peek`      | look at the current character without consuming                         |
+| `peek_next` | look one further ahead                                                  |
 
 `match` is the two-character-operator trick; `peek` is one character of lookahead; `peek_next`
 is the second character of lookahead, needed only by numbers.

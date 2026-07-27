@@ -12,7 +12,7 @@ fail to parse or fail at runtime; after it, it should produce exactly the output
 | `08-statements-and-state.lox` | Ch. 8 — Statements and State | `print`, `var`, assignment, blocks, shadowing |
 | `09-control-flow.lox` | Ch. 9 — Control Flow | `if`/`else`, `while`, `for`, short-circuit `and`/`or` |
 | `10-functions.lox` | Ch. 10 — Functions | declaration, calls, `return`, first-class functions, basic closure |
-| `11-scope-resolution.lox` | Ch. 11 — Resolving and Binding | the closure/scope bug the resolver fixes |
+| `11-scope-resolution.lox` | Ch. 11 — Resolving and Binding | the closure/scope bug the resolver fixes — **project goal, see root README** |
 | `12-classes.lox` | Ch. 12 — Classes | `class`, instantiation, fields, methods, `this`, `init` |
 | `13-inheritance.lox` | Ch. 13 — Inheritance | `<`, inherited methods, `super` |
 
