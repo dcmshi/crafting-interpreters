@@ -1,0 +1,21 @@
+// Chapter 11 — Resolving and Binding
+//
+// This is the bug the resolver exists to fix. Before Chapter 11 the second call
+// prints "block", because the environment chain is walked at call time and by then
+// a new `a` exists in the block. A closure must capture the environment as it was
+// when the function was *declared*, so both calls must print "global".
+//
+// Expected output:
+// global
+// global
+
+var a = "global";
+{
+  fun showA() {
+    print a;
+  }
+
+  showA();
+  var a = "block";
+  showA();
+}

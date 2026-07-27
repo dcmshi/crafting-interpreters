@@ -1,0 +1,45 @@
+// Chapter 7 — Evaluating Expressions
+//
+// Expected output:
+// 1234
+// 12.34
+// I am a string
+// 7
+// -3
+// 1.5
+// true
+// false
+// false
+// false
+// true
+// false
+// true
+// true
+// bagels and beignets
+
+// Literals. Numbers are all doubles, so 1234 must not print as 1234.0.
+print 1234;
+print 12.34;
+print "I am a string";
+
+// Arithmetic.
+print 3 + 4;
+print 3 - 6;
+print 3 / 2;
+
+// Comparison.
+print 2 < 3;
+print 3 <= 2;
+
+// Equality: no implicit conversion, so these are all false.
+print 1 == 2;
+print 314 == "pi";
+print "cat" != "dog";
+
+// Truthiness: only false and nil are falsey. 0 is truthy.
+print !true;
+print !nil;
+print !0;
+
+// `+` is overloaded for string concatenation.
+print "bagels" + " and " + "beignets";

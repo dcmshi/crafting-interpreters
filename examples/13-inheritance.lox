@@ -1,0 +1,45 @@
+// Chapter 13 — Inheritance
+//
+// Expected output:
+// Enjoy your ham and English muffin, Noble Reader.
+// How about a Bloody Mary?
+// Enjoy your ham and English muffin, Noble Reader.
+// How about a Mimosa?
+
+class Breakfast {
+  init(meat, bread) {
+    this.meat = meat;
+    this.bread = bread;
+  }
+
+  serve(who) {
+    print "Enjoy your " + this.meat + " and " + this.bread + ", " + who + ".";
+  }
+}
+
+// Subclasses inherit methods (there are no declared fields to inherit).
+class Brunch < Breakfast {
+  drink() {
+    print "How about a Bloody Mary?";
+  }
+}
+
+var benedict = Brunch("ham", "English muffin");
+benedict.serve("Noble Reader");
+benedict.drink();
+
+// `super` calls the superclass's version of a method.
+class Fancy < Brunch {
+  init(meat, bread, drink) {
+    super.init(meat, bread);
+    this.beverage = drink;
+  }
+
+  drink() {
+    print "How about a " + this.beverage + "?";
+  }
+}
+
+var fancy = Fancy("ham", "English muffin", "Mimosa");
+fancy.serve("Noble Reader");
+fancy.drink();

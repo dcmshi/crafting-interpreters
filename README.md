@@ -7,9 +7,9 @@ building the Lox language from scratch — in Python instead of Java.
 
 ### Part I — Welcome
 
-- [ ] 1. Introduction
-- [ ] 2. A Map of the Territory
-- [ ] 3. The Lox Language
+- [x] 1. Introduction — [notes](notes/01-introduction.md)
+- [x] 2. A Map of the Territory — [notes](notes/02-a-map-of-the-territory.md)
+- [x] 3. The Lox Language — [notes](notes/03-the-lox-language.md)
 
 ### Part II — A Tree-Walk Interpreter (pylox)
 
@@ -28,6 +28,8 @@ building the Lox language from scratch — in Python instead of Java.
 
 - [ ] 14–30 (stretch goal)
 
-## Notes
+## Layout
 
-Chapter notes live in `notes/`.
+- `notes/` — one write-up per chapter.
+- `examples/` — Lox programs used as smoke tests. Each file is named for the chapter
+  that makes it run; see [examples/README.md](examples/README.md).

@@ -1,0 +1,49 @@
+// Chapter 8 — Statements and State
+//
+// Expected output:
+// here is my value
+// nil
+// bagels
+// beignets
+// inner
+// outer
+// a b c
+// a b c
+
+var imAVariable = "here is my value";
+print imAVariable;
+
+// An omitted initializer implicitly means nil.
+var iAmNil;
+print iAmNil;
+
+// Assignment.
+var breakfast = "bagels";
+print breakfast;
+breakfast = "beignets";
+print breakfast;
+
+// Blocks introduce a scope, and inner declarations shadow outer ones.
+var shadowed = "outer";
+{
+  var shadowed = "inner";
+  print shadowed;
+}
+print shadowed;
+
+// Nested scopes read through to the enclosing environment.
+var a = "a";
+{
+  var b = "b";
+  {
+    var c = "c";
+    print a + " " + b + " " + c;
+  }
+}
+
+// Assignment is an expression, so it chains.
+var x;
+var y;
+var z;
+x = y = z = "a b c";
+print x;

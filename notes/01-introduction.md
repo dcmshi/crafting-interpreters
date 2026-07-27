@@ -12,13 +12,13 @@ The other payoff is less tangible but more real: after this, no language is a bl
 
 The book implements Lox twice. This is the central structural decision:
 
-| | **jlox** (Part II, ch. 4–13) | **clox** (Part III, ch. 14–30) |
-|---|---|---|
-| Host language | Java | C |
-| Strategy | Tree-walk interpreter | Bytecode virtual machine |
-| Optimizes for | Concepts, clarity | Performance, control |
-| Teaches | Semantics — scoping, closures, dispatch, inheritance | Memory, GC, encoding, dispatch cost |
-| Speed | Slow, and that's fine | Genuinely fast |
+|               | **jlox** (Part II, ch. 4–13)                         | **clox** (Part III, ch. 14–30)      |
+| ------------- | ---------------------------------------------------- | ----------------------------------- |
+| Host language | Java                                                 | C                                   |
+| Strategy      | Tree-walk interpreter                                | Bytecode virtual machine            |
+| Optimizes for | Concepts, clarity                                    | Performance, control                |
+| Teaches       | Semantics — scoping, closures, dispatch, inheritance | Memory, GC, encoding, dispatch cost |
+| Speed         | Slow, and that's fine                                | Genuinely fast                      |
 
 The first pass gets a *correct* language into your hands quickly so you understand what the semantics actually are. The second pass rebuilds the same language caring about how it runs. The insight is that these are separable concerns, and conflating them is what makes compilers feel hard.
 

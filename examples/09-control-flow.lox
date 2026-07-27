@@ -1,0 +1,60 @@
+// Chapter 9 — Control Flow
+//
+// Expected output:
+// yes
+// 1
+// 2
+// 3
+// 1
+// 2
+// 3
+// 0
+// 1
+// 1
+// 2
+// 3
+// 5
+// 8
+// false
+// true
+// hi
+// yes
+
+if (1 < 2) {
+  print "yes";
+} else {
+  print "no";
+}
+
+var a = 1;
+while (a < 4) {
+  print a;
+  a = a + 1;
+}
+
+for (var i = 1; i < 4; i = i + 1) {
+  print i;
+}
+
+// Fibonacci — the book's own for-loop example.
+var x = 0;
+var y = 1;
+for (var i = 0; i < 6; i = i + 1) {
+  print x;
+  var temp = x;
+  x = y;
+  y = temp + y;
+}
+
+// `and` / `or` short-circuit, so they are control flow, not plain binary operators.
+print true and false;
+print false or true;
+
+// They return an operand, not a boolean.
+print nil or "hi";
+
+// If short-circuiting works, the right side never runs and never errors.
+var ran = "no";
+false and (ran = "yes");
+true or (ran = "yes");
+print ran;

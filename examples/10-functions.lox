@@ -1,0 +1,68 @@
+// Chapter 10 — Functions
+//
+// Expected output:
+// 3
+// 3
+// nil
+// 3
+// I'm local!
+// outside
+// 1
+// 2
+// 3
+
+fun printSum(a, b) {
+  print a + b;
+}
+printSum(1, 2);
+
+fun returnSum(a, b) {
+  return a + b;
+}
+print returnSum(1, 2);
+
+// Falling off the end of a function implicitly returns nil.
+fun noReturn() {
+  "unused";
+}
+print noReturn();
+
+// Functions are first class: pass them, return them, call the result.
+fun identity(a) {
+  return a;
+}
+print identity(returnSum)(1, 2);
+
+// Functions can be declared inside other functions.
+fun outerFunction() {
+  fun localFunction() {
+    print "I'm local!";
+  }
+  localFunction();
+}
+outerFunction();
+
+// A closure: `inner` still sees `outside` after returnFunction() has returned.
+fun returnFunction() {
+  var outside = "outside";
+  fun inner() {
+    print outside;
+  }
+  return inner;
+}
+var fn = returnFunction();
+fn();
+
+// A closure over a mutable counter — each call sees the updated variable.
+fun makeCounter() {
+  var i = 0;
+  fun count() {
+    i = i + 1;
+    print i;
+  }
+  return count;
+}
+var counter = makeCounter();
+counter();
+counter();
+counter();

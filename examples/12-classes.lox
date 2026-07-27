@@ -1,0 +1,63 @@
+// Chapter 12 — Classes
+//
+// Expected output:
+// Breakfast
+// Breakfast instance
+// Eggs a-fryin'!
+// Enjoy your breakfast, Dear Reader.
+// sausage
+// Enjoy your sausage and sourdough, Dear Reader.
+// Enjoy your bacon and toast, Dear Reader.
+
+class Breakfast {
+  cook() {
+    print "Eggs a-fryin'!";
+  }
+
+  serve(who) {
+    print "Enjoy your breakfast, " + who + ".";
+  }
+}
+
+// Classes are first-class values.
+var someVariable = Breakfast;
+print someVariable;
+
+// Instantiate by calling the class itself — no `new`.
+var breakfast = Breakfast();
+print breakfast;
+
+breakfast.cook();
+breakfast.serve("Dear Reader");
+
+// Fields are open: assign any field on any instance at any time.
+breakfast.meat = "sausage";
+breakfast.bread = "sourdough";
+print breakfast.meat;
+
+// `this` refers to the receiving instance.
+class Meal {
+  serve(who) {
+    print "Enjoy your " + this.meat + " and " + this.bread + ", " + who + ".";
+  }
+}
+
+var meal = Meal();
+meal.meat = "sausage";
+meal.bread = "sourdough";
+meal.serve("Dear Reader");
+
+// init() is the constructor, called automatically on instantiation.
+class Toast {
+  init(meat, bread) {
+    this.meat = meat;
+    this.bread = bread;
+  }
+
+  serve(who) {
+    print "Enjoy your " + this.meat + " and " + this.bread + ", " + who + ".";
+  }
+}
+
+var baconAndToast = Toast("bacon", "toast");
+baconAndToast.serve("Dear Reader");
